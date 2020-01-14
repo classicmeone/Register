@@ -1,2 +1,4 @@
 az webapp list-runtimes
+az webapp create -p "Microsoft Partner Network" -n  "FacialApp" -g "DATA_AI_RG" --runtimes "python|3.6" --deployment-local-gitgit  
+
 
