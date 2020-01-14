@@ -1,4 +1,4 @@
 django;
 cmake;
 face_recognition;
-opencv-python-contrib;
+
