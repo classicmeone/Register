@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Faces',
+    'Recognise'
 ]
 
 MIDDLEWARE = [
@@ -131,5 +132,10 @@ SRC = os.path.abspath( os.path.join(MEDIA_ROOT, "source"))
 DSET =  os.path.abspath(os.path.join(SRC, "dataset"))
 OUT =  os.path.abspath(os.path.join(SRC, "output"))
 OUTPUT = os.path.abspath(os.path.join(SRC, "output"))
-IMGSRC = os.path.join(BASE_DIR, "media/source/output")
+IMGSRC = os.path.join(MEDIA_URL, "source/output")
 
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+FACE =  os.path.abspath(os.path.join(SRC, "face_detection_model"))

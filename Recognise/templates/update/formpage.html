@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Video Image Search String</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/form.css' %}" >
+        <script src=""></script>
+    </head>
+    <body >
+    
+        <div class="container">
+            <div id="form-main">
+                <div id="form-div">
+                <h3> {{ msg }} </h3>
+                    <form class="montform" id="reused_form" enctype="multipart/form-data" method="post" action="{% url 'multi' %}" >
+                       {% csrf_token %}
+                       {{ form.as_p }}
+                        <div class="submit">
+                            <button type="submit" class="button-blue">SUBMIT</button>
+                            <div class="ease"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

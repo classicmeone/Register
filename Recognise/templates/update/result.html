@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>video Page</title>
+    <style>
+        body{
+			margin: 0;
+			padding: 0;
+			background: #89BBFE;
+			color: #fff;
+			font-family: Arial;
+            
+
+		}
+        .top {
+            background-color:#172A3A;
+            height: 100px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+		}
+		
+    </style>
+    <script src="{% static 'js/jquery.js' %}"> </script>
+    
+</head>
+<body>
+<img src="{% static 'images/loader.gif' %}" class="load" />
+    <div>
+
+        <div class="top">
+            <h1 style="font-size:50px;text-align:center;">The search page </h1>
+        </div>
+        <div>
+        <p>
+
+        <!--
+        {{ stdate }}
+        {{ endate }}
+
+        -->
+        
+         </p>
+         <h2></h2>
+<img src="{{ MEDIA_URL }}{{ image }}" width=300 height=300 name="search" />
+        </div>
+        <div class=" bottom">
+            <p style="font-size:30px;text-align:left;">The search results are ......... </p>
+            
+          
+
+            {% for vid in Videos %}
+
+               <video width="320" height="300" controls>
+                <source src="{{ MEDIA_URL }}{{ vid }}" type="video/mp4">
+            </video>
+
+            {% endfor %}
+          <h1> {{ msg }} </h1>
+            
+        
+        </div>
+        
+
+    </div>
+</body>
+</html>
