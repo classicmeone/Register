@@ -2,4 +2,5 @@ django;
 cmake;
 face_recognition;
 opencv-python;
+ipython;
 
