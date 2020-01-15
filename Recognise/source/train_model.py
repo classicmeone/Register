@@ -44,4 +44,4 @@ def train_model():
 	f.close()
 
 
-train_model()
+#train_model()
