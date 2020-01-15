@@ -1,4 +1,6 @@
-import cv2
+!pip install opencv-python
+!apt update && apt install -y libsm6 libxext6
+from cv2 import cv2
 import face_recognition
 import numpy as np
 
