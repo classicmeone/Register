@@ -15,15 +15,30 @@
         <div class="container">
             <div id="form-main">
                 <div id="form-div">
+                <div class="test">
+<img src="{% static 'images/loader3.gif' %}" />
+</div>
+ <div id="result">
+
+        <img src="{{ MEDIA_URL }}{{ image }}" width=300 height=300 name="search" id="imgs" />
+        <p style="font-size:30px;text-align:left;" class="msg">The search results are ......... </p>
+            
+        <div class='vids'>
+
+         </div>
+ </div> 
                     <form class="montform" id="reused_form" >
                         <p class="name">
-                            <input name="name" type="text" class="feedback-input" required placeholder="Name" id="name" />
+                            {{ form.name}}
                         </p>
-                        <p class="email">
-                            <input name="email" type="email" required class="feedback-input" id="email" placeholder="Email" />
+                        <p class="name">
+                            {{ form.startdate }}
                         </p>
-                        <p class="text">
-                            <textarea name="message" class="feedback-input" id="comment" placeholder="Message"></textarea>
+                        <p class="name">
+                            {{ form.enddate }}
+                        </p>
+                         <p class="file">
+                            {{ form.image }}
                         </p>
                         <div class="submit">
                             <button type="submit" class="button-blue">SUBMIT</button>
@@ -41,4 +56,105 @@
             </div>
         </div>
     </body>
+    <script>
+$(document).ready(function(e) {
+	
+	$("#result").hide()
+	$(".test").hide()
+	
+	$('#frm').submit( function(e) {
+		//alert("Submit")
+		e.preventDefault();
+		$(".test").show()
+		$(".whole").hide()
+		
+		//alert($('#img').val())
+		
+		dat = {
+				
+				'startdate':$('#stdate').val(),
+				'endate':$('#endate').val(),
+				'image':$('#img').val(),
+				'name':$('#name').val()
+		} 
+		//dat = new FormData(this)
+		//alert(dat)
+		$.ajax({
+			url: "{% url 'search' %}",
+			   type: "POST",
+			   data:  new FormData(this),
+			   contentType: false,
+			   cache: false,
+			   processData:false,
+			   success:function(data, status)
+				
+				{
+						//alert("Welcome")
+						
+						//alert(data)
+						imgsrc = "{{ MEDIA_URL }}" + data['image']
+						$("#imgs").attr('src', imgsrc)
+						//alert(data['Videos'])
+						if(data['Videos'].length > 0)
+							{
+						for(i=0; i<data['Videos'].length; i++)
+							{
+							  
+							   //alert(data['Videos'][i])
+							   sr = data['Videos'][i]
+
+			                   sr = "{{ MEDIA_URL }}"+ sr
+			                   //alert(sr)
+			                   //alert(nvid)
+			                   
+			 	              vid =  "<video width='320' height='300' controls id='vids' >" +  "<source src=" +sr +" type=video/mp4 />"
+			 	             // alert(vid)
+			 	              $("div.vids").append(vid)
+			 	              
+							}  
+							}
+						else
+							{
+							   
+							 $("p.msg").text("Search returned zero videos")
+							}
+						$(".test").hide()
+						$("#result").show()
+							
+							}
+			
+		});
+	
+	})
+	// CSRF
+	function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+	// CSRF
+})
+</script>
 </html>

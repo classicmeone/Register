@@ -16,7 +16,7 @@ def loadform(req):
     
     frm = Upload()
     #st = static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
-    return render(req, 'faces/design.html', {'form':frm})
+    return render(req, 'faces/form.html', {'form':frm})
 
 
 def search(req):

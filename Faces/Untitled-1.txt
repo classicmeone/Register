@@ -1,0 +1,4 @@
+{
+    "stderr": "ERROR: az: error: unrecognized arguments: --runtimes python|3.6\r\nusage: az [-h] [--verbose] [--debug]\r\n          [--output {json,jsonc,table,tsv,yaml,none}] [--query JMESPATH]\r\n          {webapp} ...\r\n",
+    "stdout": ""
+}
