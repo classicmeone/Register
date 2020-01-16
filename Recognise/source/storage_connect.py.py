@@ -1,8 +1,8 @@
 
 
-from azure.storage.blob import BlockBlobService, PublicAccess
-from datetime import date,datetime timedelta
-from pandas import date_range
+#from azure.storage.blob import BlockBlobService, PublicAccess
+#from datetime import date,datetime timedelta
+#from pandas import date_range
 
 
 class Videos(object):
