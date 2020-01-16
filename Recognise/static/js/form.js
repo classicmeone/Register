@@ -51,17 +51,13 @@ $(function()
         });
         
 
-                    var formdata = new FormData(this);
-            $.ajax({
+                    $.ajax({
                 type: "POST",
                 url: 'handler.php',
-                data: formdata,
+                data: $form.serialize(),
                 success: after_form_submitted,
-                dataType: 'json' ,
-                processData: false,
-                contentType: false,
-                cache: false        
-            });
+                dataType: 'json' 
+            });        
         
       });	
 });
