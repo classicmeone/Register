@@ -19,7 +19,7 @@ from Faces import views
 
 
 urlpatterns = [
-    path('/', views.index),
+    path('', views.index),
     path('first/', include('Faces.urls')),
     path('second/', include('Recognise.urls')),
     path('admin/', admin.site.urls),

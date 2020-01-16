@@ -6,5 +6,5 @@ ipython;
 scikit-learn;
 requests;
 azure;
-
-
+imutils;
+libgtk2.0-dev;
