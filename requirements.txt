@@ -3,5 +3,8 @@ cmake;
 face_recognition;
 opencv-python;
 ipython;
+scikit-learn;
+requests;
+azure;
 
 
